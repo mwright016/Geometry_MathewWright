@@ -1,33 +1,42 @@
 package cop2210.geometry.figures;
 
 //name class
-public class Circle extends GeometricFigure{
-
+public class Circle {
     // private fields
    private double radius;
    private double pi;
+   private Point point;
 
    //constructor
-    public Circle(double radius, String color){
-        super("Circle", color);
+    public Circle(double radius , Point centerPoint){
         this.pi = Math.PI;
-        this.radius = radius;
+        setRadius(radius);
+        this.point = centerPoint;
     }
      //getters
     public double getRadius(){
         return this.radius;
     }
 
+    public Point getPoint() {
+        return point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
+    }
 
     public double getPi() {
         return pi;
     }
 
-    private void setRadius(double radius) {
+    public void setRadius(double radius) {
+        if(radius  > 20)
+            throw new IllegalArgumentException("Radius cannot be greater than 20");
         this.radius = radius;
     }
 
-    private void setPi(double pi) {
+    public void setPi(double pi) {
         this.pi = pi;
     }
     public double area(){
@@ -37,8 +46,6 @@ public class Circle extends GeometricFigure{
     public double perimeter(){
      return   2*radius*pi;
     }
-
-
 }
 
 
